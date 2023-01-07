@@ -16,8 +16,8 @@ public class Main {
         /**
          * Kullanıcıya gösterilecek oyun alanını başta *'larla doldur.
          */
-        for(int  i = 0; i < 6; i++) {
-            for(int  j = 0; j < 6; j++) {
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 6; j++) {
                 gameArea[i][j] = '*';
             }
         }
@@ -25,7 +25,7 @@ public class Main {
         /**
          * 8 tane rastgele yere bomba yerleştir.
          */
-        for(int i = 0; i < 8; i++) {
+        for (int i = 0; i < 8; i++) {
             Random r = new Random();
             int bombaSatir = r.nextInt(6);
             int bombaSutun = r.nextInt(6);
@@ -36,43 +36,39 @@ public class Main {
         }
 
         for (int i = 0; i < gameArea.length; i++) {
-            char[] bombInfo1 = bombInfo[i];
-            int index = (Arrays.toString(bombInfo1).indexOf('B'));
-            if (index == -1){
-                bombInfo1[i] = '1';
-                bombInfo[i] = bombInfo1;
-
+            for (int j = 0; j < gameArea.length; j++) {
+                System.out.print(bombInfo[i][j]);
             }
-        }
-        for (int i = 0; i < gameArea.length; i++) {
-            System.out.println(bombInfo[i]);
+            System.out.println();
         }
 
         System.out.println("*********************************");
         for (int satir = 0; satir < gameArea.length; satir++) {
             for (int sutun = 0; sutun < gameArea.length; sutun++) {
-                int count  = 0;
+                int count = 0;
                 if (bombInfo[satir][sutun] != 'B') {
-                    if ((sutun < gameArea.length-1) && bombInfo[satir][sutun+1] == 'B') {
+                    if ((sutun < gameArea.length - 1) && bombInfo[satir][sutun + 1] == 'B') {
                         count++;
-                        bombInfo[satir][sutun ] = (char) (count+ '0');
+                        bombInfo[satir][sutun] = (char) (count + '0');
 
                     }
-                    if ((satir < gameArea.length-1) && bombInfo[satir+1][sutun] == 'B') {
+                    if ((satir < gameArea.length - 1) && bombInfo[satir + 1][sutun] == 'B') {
                         count++;
-                        bombInfo[satir][sutun] = (char) (count+ '0');
+                        bombInfo[satir][sutun] = (char) (count + '0');
+
 
                     }
-                    if ((satir > 0) && bombInfo[satir-1][sutun] == 'B') {
+                    if ((satir > 0) && bombInfo[satir - 1][sutun] == 'B') {
                         count++;
-                        bombInfo[satir][sutun] =(char) (count+ '0');
+                        bombInfo[satir][sutun] = (char) (count + '0');
                     }
-                    if ((sutun > 0) && bombInfo[satir][sutun-1] == 'B') {
+                    if ((sutun > 0) && bombInfo[satir][sutun - 1] == 'B') {
                         count++;
-                        bombInfo[satir][sutun] = (char) (count+ '0');
+                        bombInfo[satir][sutun] = (char) (count + '0');
                     }
-                }if (bombInfo[satir][sutun] == 0) {
-                    bombInfo[satir][sutun] = ' ';
+                }
+                if (bombInfo[satir][sutun] == 0) {
+                    bombInfo[satir][sutun] = (char) (count+ '0');
                 }
                 System.out.print(bombInfo[satir][sutun]);
             }
@@ -80,14 +76,14 @@ public class Main {
 
         }
 
-       /*
-        *//**
+        /*
+         *//**
          * Oyunumuz başlıyor
          */
         System.out.println("Mayın tarlasına hoşgeldiniz");
         Scanner sc = new Scanner(System.in);
 
-        while(true) {
+        while (true) {
 
             /**
              * Oyun alanını ekrana bastır
@@ -131,9 +127,9 @@ public class Main {
                 gameArea[satırNumara - 1][sutunNumara - 1] = bombInfo[satırNumara - 1][sutunNumara - 1];
             }
             int count = 0;
-            for (int i = 0; i < bombInfo.length ; i++) {
+            for (int i = 0; i < bombInfo.length; i++) {
                 for (int j = 0; j < bombInfo.length; j++) {
-                    if (bombInfo[i][j] != 'B'){
+                    if (bombInfo[i][j] != 'B') {
                         count++;
                     }
                 }
@@ -143,13 +139,13 @@ public class Main {
             int count2 = 0;
             for (int i = 0; i < gameArea.length; i++) {
                 for (int j = 0; j < gameArea.length; j++) {
-                    if (gameArea[i][j] != '*'){
+                    if (gameArea[i][j] != '*') {
                         count2++;
                     }
                 }
             }
 
-            if (count == count2){
+            if (count == count2) {
                 System.out.println("oyun bitti");
                 break;
             }
