@@ -139,7 +139,7 @@ public class Main {
                 }
 
             }
-            System.out.println(count);
+
             int count2 = 0;
             for (int i = 0; i < gameArea.length; i++) {
                 for (int j = 0; j < gameArea.length; j++) {
@@ -148,7 +148,7 @@ public class Main {
                     }
                 }
             }
-            System.out.println(count2);
+
             if (count == count2){
                 System.out.println("oyun bitti");
                 break;
